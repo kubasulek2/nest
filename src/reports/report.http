@@ -1,0 +1,39 @@
+
+### Login as user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+	"password": "test1",
+	"email": "kuba1@gmail.com"
+}
+
+
+### Test
+GET  http://localhost:3000/reports
+
+### Post new report
+POST http://localhost:3000/reports
+Content-Type: application/json
+
+{
+	"make": "Toyota",
+	"model": "Corolla",
+	"year": 1980,
+	"mileage": 583000,
+	"lat": 51.9503872,
+	"lng": 15.5123712,
+	"price": 1000
+}
+
+### Approve report
+PATCH  http://localhost:3000/reports/1
+Content-Type: application/json
+
+{
+	"approved": true
+}
+
+### Get estimate
+GET  http://localhost:3000/reports?make=honda&model=Civic&year=2000
+

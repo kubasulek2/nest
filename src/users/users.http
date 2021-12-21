@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-	"password": "test3",
-	"email": "kuba3@gmail.com"
+	"password": "test1",
+	"email": "kuba1@gmail.com"
 }
 
 ### Login as user
@@ -12,15 +12,15 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-	"password": "test3",
-	"email": "kuba3@gmail.com"
+	"password": "test1",
+	"email": "kuba1@gmail.com"
 }
 
 ### Get logged user
 GET http://localhost:3000/auth/me
 
 ### Sign out user
-POST http://localhost:3000/auth/	
+POST http://localhost:3000/auth/signout	
 
 ### Get a user with id 1
 GET http://localhost:3000/auth/1

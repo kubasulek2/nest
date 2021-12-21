@@ -31,6 +31,7 @@ export class UsersController {
 
   @Get('/me')
   @UseGuards(AuthGuard)
+  @WithError()
   async getUser(@CurrrentUser() user: User | null) {
     return user;
   }
@@ -48,7 +49,6 @@ export class UsersController {
   async login(@Body() body: CreateUserDto, @Session() session: any) {
     const user = await this.authService.signin(body.email, body.password);
     session.userId = user.id;
-    console.log('session:', session);
     return user;
   }
 
@@ -58,6 +58,7 @@ export class UsersController {
     delete session.userId;
   }
 
+  @UseGuards(AuthGuard)
   @Get('/:id')
   @WithError()
   findUser(@Param('id') id: string) {
@@ -72,12 +73,14 @@ export class UsersController {
 
   @Patch('/:id')
   @WithError()
+  @UseGuards(AuthGuard)
   updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
     return this.usersService.update(Number(id), body);
   }
 
   @Delete('/:id')
   @WithError()
+  @UseGuards(AuthGuard)
   async removeUser(@Param('id') id: string) {
     return this.usersService.remove(Number(id));
   }
